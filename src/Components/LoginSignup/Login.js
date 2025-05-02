@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,7 +17,8 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loginError, setLoginError] = useState('');
-  const [loginSuccess, setLoginSuccess] = useState(''); // Başarılı giriş mesajı
+  const [loginSuccess, setLoginSuccess] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // Şifre görünürlüğü durumu
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -24,7 +27,6 @@ const Login = () => {
       [name]: type === 'checkbox' ? checked : value
     }));
     
-    // Hata mesajını temizle
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -32,9 +34,12 @@ const Login = () => {
       }));
     }
     
-    // Başarı ve hata mesajlarını temizle
     if (loginError) setLoginError('');
     if (loginSuccess) setLoginSuccess('');
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(prevState => !prevState); // Şifre görünürlüğünü değiştir
   };
 
   const validateForm = () => {
@@ -70,16 +75,13 @@ const Login = () => {
 
         console.log('Giriş başarılı:', response.data);
         
-        // Token ve kullanıcı bilgilerini localStorage'a kaydet
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         
-        // Başarılı giriş mesajını göster
         setLoginSuccess(response.data.message || 'Giriş başarılı! Yönlendiriliyorsunuz...');
         
-        // 2 saniye sonra dashboard'a yönlendir
         setTimeout(() => {
-          navigate('/dashboard');
+          navigate('/');
         }, 2000);
       } catch (error) {
         if (error.response) {
@@ -128,20 +130,28 @@ const Login = () => {
           
           <div className='input-group'>
             <label htmlFor='password'>Şifre</label>
-            <input 
-              type='password' 
-              id='password' 
-              name='password'
-              value={formData.password}
-              onChange={handleChange}
-              className={errors.password ? 'error' : ''}
-            />
+            <div className="password-wrapper">
+                <input 
+                  type={showPassword ? 'text' : 'password'} // Şifre görünürlüğü
+                  id="password" 
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className={errors.password ? 'error' : ''}
+                  placeholder="Şifre"
+                />
+                <FontAwesomeIcon 
+                  icon={showPassword ? faEyeSlash : faEye} 
+                  className="toggle-password-icon" 
+                  onClick={togglePasswordVisibility} 
+                />
+            </div>
             {errors.password && <span className='error-text'>{errors.password}</span>}
           </div>
           
           <div className='login-options'>
             <div className='remember-me'>
-            <input 
+              <input 
                 type='checkbox' 
                 id='rememberMe' 
                 name='rememberMe'

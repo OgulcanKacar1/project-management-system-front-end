@@ -1,8 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faSignOutAlt, faHome, faTasks, faChartBar } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  // Kullanıcı durumunu kontrol et
+  useEffect(() => {
+    checkUserAuth();
+  }, []);
+
+  // Kullanıcı kimlik doğrulama durumunu kontrol eden fonksiyon
+  const checkUserAuth = () => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+      setUser(null);
+    }
+  };
+
+  const handleLogout = () => {
+    // Çıkış yap: localStorage'dan kullanıcı bilgilerini sil
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    
+    // Kullanıcı durumunu güncelle
+    setUser(null);
+    
+    // Dropdown'ı kapat
+    setShowDropdown(false);
+    
+    // Anasayfaya yönlendir
+    navigate('/');
+    
+    // Sayfayı yeniden yükle (bu butonların hemen güncellenmesini sağlar)
+    window.location.reload();
+  };
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -10,23 +53,65 @@ const Navbar = () => {
           PMS Pro
         </Link>
         
-        <ul className="nav-menu">
-          <li className="nav-item">
+        <div className="nav-menu">
+          <div className="nav-item">
             <Link to="/" className="nav-links">
-              Ana Sayfa
+              <FontAwesomeIcon icon={faHome} className="nav-icon" />
+              <span className="nav-text">Ana Sayfa</span>
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/login" className="nav-links">
-              Giriş
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/signup" className="nav-links">
-              Kayıt
-            </Link>
-          </li>
-        </ul>
+          </div>
+          
+          {user ? (
+            // Kullanıcı giriş yapmışsa
+            <div className="nav-right">
+              {/* Dashboard linki */}
+              <div className="nav-item">
+                <Link to="/dashboard" className="nav-links">
+                  <FontAwesomeIcon icon={faChartBar} className="nav-icon" />
+                  <span className="nav-text">Dashboard</span>
+                </Link>
+              </div>
+              
+              {/* Kullanıcı profili dropdown */}
+              <div className="nav-item user-profile">
+                <div className="profile-button" onClick={toggleDropdown}>
+                  <div className="avatar">
+                    <FontAwesomeIcon icon={faUser} />
+                  </div>
+                  <span className="user-name">{user.firstName}</span>
+                </div>
+                
+                {/* Dropdown Menü */}
+                {showDropdown && (
+                  <div className="dropdown-menu">
+                    <Link to="/profile" className="dropdown-item">
+                      <FontAwesomeIcon icon={faUser} className="dropdown-icon" />
+                      Profilim
+                    </Link>
+                    <button onClick={handleLogout} className="dropdown-item">
+                      <FontAwesomeIcon icon={faSignOutAlt} className="dropdown-icon" />
+                      Çıkış Yap
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            // Kullanıcı giriş yapmamışsa
+            <div className="nav-right">
+              <div className="nav-item">
+                <Link to="/login" className="nav-button login-button">
+                  Giriş
+                </Link>
+              </div>
+              <div className="nav-item">
+                <Link to="/signup" className="nav-button signup-button">
+                  Kayıt Ol
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

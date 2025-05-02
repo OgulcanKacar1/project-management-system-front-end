@@ -1,8 +1,18 @@
 import React from 'react';
 import './home.css';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Navbar from '../Navbar/Navbar';
 const Home = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Sayfa yüklendiğinde localStorage'dan kullanıcı bilgisini kontrol et
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
   return (
     <>
       <Navbar />
@@ -11,12 +21,21 @@ const Home = () => {
           <h1>Project Management System</h1>
           <p>Profesyonel proje yönetimi için güçlü çözümler</p>
           <div className="hero-btns">
-            <button className="btn btn-primary">
-              <Link to="/signUp" className="btn-link">Kayıt Ol</Link>
-            </button>
-            <button className="btn btn-outline">
-              <Link to="/login" className="btn-link">Giriş Yap</Link>
-            </button>
+            {user ? (
+              // Kullanıcı giriş yapmışsa
+              <button className="btn btn-primary">
+                <Link to="/dashboard" className="btn-link">Hemen Başla</Link>
+              </button>
+            ) : (
+              <>
+                <button className="btn btn-primary">
+                  <Link to="/signup" className="btn-link">Kayıt Ol</Link>
+                </button>
+                <button className="btn btn-outline">
+                  <Link to="/login" className="btn-link">Giriş Yap</Link>
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
