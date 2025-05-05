@@ -1,0 +1,54 @@
+.avatar {
+    background-color: #4b0082;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Boyut varyasyonları */
+  .avatar-small {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .avatar-medium {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .avatar-large {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .avatar-text {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  /* Boyutlara göre yazı boyutları */
+  .avatar-small .avatar-text {
+    font-size: 1rem;
+  }
+  
+  .avatar-medium .avatar-text {
+    font-size: 1.5rem;
+  }
+  
+  .avatar-large .avatar-text {
+    font-size: 2rem;
+  }
+  
+  /* Mobil için daha küçük yazı boyutları */
+  @media (max-width: 576px) {
+    .avatar-large .avatar-text {
+      font-size: 1.8rem;
+    }
+    
+    .avatar-medium .avatar-text {
+      font-size: 1.3rem;
+    }
+  }

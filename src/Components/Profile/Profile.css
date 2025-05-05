@@ -1,0 +1,299 @@
+/* Ana container stili */
+.profile-container {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 70px);
+    background-color: #f5f5f9;
+  }
+  
+  /* Profil kartı */
+  .profile-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Profil başlık alanı */
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 20px;
+  }
+  
+  /* Profil avatar */
+  .profile-avatar {
+    background-color: #4b0082;
+    color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(75, 0, 130, 0.2);
+  }
+  
+  /* Profil başlığı */
+  .profile-title {
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+    flex: 1;
+    margin: 0;
+    text-align: left;
+  }
+  
+  /* Form stilleri */
+  .profile-form {
+    margin-top: 20px;
+  }
+  
+  .profile-info {
+    margin-bottom: 30px;
+  }
+  
+  /* Form grupları */
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 16px;
+  }
+  
+  .form-group p {
+    padding: 12px 0;
+    color: #333;
+    font-size: 16px;
+    border-bottom: 1px dashed #ddd;
+    word-break: break-word;
+    margin: 0;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #4b0082;
+    box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1);
+  }
+  
+  /* Şifre değiştirme bölümü */
+  .password-section {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 2px dashed #eee;
+  }
+  
+  .password-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #4b0082;
+    font-weight: 600;
+  }
+  
+  /* Buton alanı */
+  .profile-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+  
+  /* Buton stilleri */
+  .btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .btn svg {
+    margin-right: 5px;
+  }
+  
+  /* Düzenleme butonu */
+  .btn-edit {
+    background-color: #4b0082;
+    color: white;
+  }
+  
+  .btn-edit:hover {
+    background-color: #6a1b9a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Kaydetme butonu */
+  .btn-save {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .btn-save:hover {
+    background-color: #3e9142;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* İptal butonu */
+  .btn-cancel {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .btn-cancel:hover {
+    background-color: #e53935;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Uyarı mesajları */
+  .alert {
+    padding: 14px 16px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .alert-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+  }
+  
+  .alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+  }
+  
+  /* Yükleniyor animasyonu */
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #4b0082;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Mobil cihazlar için düzenlemeler */
+  @media (max-width: 576px) {
+    .profile-container {
+      padding: 20px 15px;
+    }
+    
+    .profile-card {
+      padding: 20px 15px;
+      border-radius: 10px;
+    }
+    
+    .profile-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+    
+    .profile-avatar {
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+    
+    .profile-title {
+      font-size: 20px;
+    }
+    
+    .form-group label,
+    .form-group p,
+    .form-group input,
+    .password-section h3,
+    .alert,
+    .btn {
+      font-size: 15px;
+    }
+    
+    .profile-actions {
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    
+    .btn {
+      width: 100%;
+      justify-content: center;
+      padding: 12px 16px;
+    }
+  }
+  
+  /* Tablet cihazlar için düzenlemeler */
+  @media (min-width: 577px) and (max-width: 768px) {
+    .profile-card {
+      padding: 25px 20px;
+    }
+    
+    .profile-avatar {
+      width: 70px;
+      height: 70px;
+    }
+    
+    .profile-title {
+      font-size: 22px;
+    }
+    
+    .form-group label,
+    .form-group p,
+    .form-group input,
+    .password-section h3,
+    .alert,
+    .btn {
+      font-size: 15px;
+    }
+    
+    .profile-actions {
+      justify-content: flex-end;
+      gap: 12px;
+    }
+  }

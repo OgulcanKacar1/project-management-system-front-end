@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSignOutAlt, faHome, faTasks, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import Avatar from '../Avatar/Avatar';
+
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -15,14 +17,19 @@ const Navbar = () => {
   }, []);
 
   // Kullanıcı kimlik doğrulama durumunu kontrol eden fonksiyon
-  const checkUserAuth = () => {
+const checkUserAuth = () => {
+  try {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
       setUser(null);
     }
-  };
+  } catch (error) {
+    console.error("localStorage'dan kullanıcı bilgisi alınırken hata:", error);
+    setUser(null);
+  }
+};
 
   const handleLogout = () => {
     // Çıkış yap: localStorage'dan kullanıcı bilgilerini sil
@@ -75,9 +82,12 @@ const Navbar = () => {
               {/* Kullanıcı profili dropdown */}
               <div className="nav-item user-profile">
                 <div className="profile-button" onClick={toggleDropdown}>
-                  <div className="avatar">
-                    <FontAwesomeIcon icon={faUser} />
-                  </div>
+                  <Avatar 
+                    firstName={user.firstName}
+                    lastName={user.lastName}
+                    size="small"
+                    className="avatar"
+                  />
                   <span className="user-name">{user.firstName}</span>
                 </div>
                 

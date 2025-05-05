@@ -7,15 +7,20 @@ const Home = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Sayfa yüklendiğinde localStorage'dan kullanıcı bilgisini kontrol et
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    try {
+      // Sayfa yüklendiğinde localStorage'dan kullanıcı bilgisini kontrol et
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (error) {
+      console.error("localStorage'dan kullanıcı bilgisi alınırken hata:", error);
+      setUser(null);
     }
   }, []);
   return (
     <>
-      <Navbar />
+    <Navbar />  
       <div className="hero-container">
         <div className="hero-content">
           <h1>Project Management System</h1>

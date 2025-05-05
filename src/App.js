@@ -6,6 +6,7 @@ import Signup from './Components/LoginSignup/Signup';
 import Home from './Components/Home/home';
 import ProtectedRoute from './Components/Auth/ProtectedRoute';
 import { Link } from 'react-router-dom';
+import Profile from './Components/Profile/Profile';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route exact path='/signup' element ={<Signup />} />
 
           <Route element={<ProtectedRoute />}>
-            {/*Korunan rotalar buraya gelecek */}
+            <Route path='/profile' element={<Profile />} />
           </Route>
 
           <Route path="*" element={
