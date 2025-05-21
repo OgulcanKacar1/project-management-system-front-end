@@ -1,0 +1,513 @@
+/* ProjectsPage.css */
+
+:root {
+  --primary: #4B0082;
+  --primary-light: #9370DB;
+  --accent: #BB86FC;
+  --background-dark: #121212;
+  --card-dark: #1E1E1E;
+  --border-dark: #333333;
+  --text-light: #F5F5F5;
+  --text-muted: #AAAAAA;
+  --success: #4CAF50;
+  --error: #F44336;
+  --warning: #FFC107;
+}
+
+/* Ana sayfa stillemesi */
+.page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.projects-page {
+  background-color: #f7f8fc;
+  min-height: calc(100vh - 60px); /* Navbar yüksekliğini hesaba kat */
+  color: #333;
+}
+
+.app-container.dark-mode .projects-page {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
+/* Başlık ve üst kısım */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  margin-bottom: 0.5rem;
+}
+
+.page-title h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+  color: #2e3b52;
+}
+
+.app-container.dark-mode .page-title h1 {
+  color: var(--accent);
+}
+
+.page-title p {
+  color: #6b7280;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.app-container.dark-mode .page-title p {
+  color: var(--text-muted);
+}
+
+.page-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Görünüm değiştirme butonları */
+.view-toggle {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.app-container.dark-mode .view-toggle {
+  background-color: var(--card-dark);
+  border-color: var(--border-dark);
+}
+
+.view-toggle button {
+  background: none;
+  border: none;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.app-container.dark-mode .view-toggle button {
+  color: var(--text-muted);
+}
+
+.view-toggle button:hover {
+  background-color: #f3f4f6;
+}
+
+.app-container.dark-mode .view-toggle button:hover {
+  background-color: rgba(187, 134, 252, 0.1);
+}
+
+.view-toggle button.active {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.app-container.dark-mode .view-toggle button.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Arama çubuğu */
+.search-bar {
+  position: relative;
+  height: 38px;
+}
+
+.search-bar input {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  width: 250px;
+  background-color: #fff;
+  font-size: 0.9rem;
+}
+
+.app-container.dark-mode .search-bar input {
+  border-color: var(--border-dark);
+  background-color: var(--card-dark);
+  color: var(--text-light);
+}
+
+.search-bar svg {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.app-container.dark-mode .search-bar svg {
+  color: var(--text-muted);
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.app-container.dark-mode .search-bar input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.2);
+}
+
+/* Filtre açılır menüsü */
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.app-container.dark-mode .filter-dropdown button {
+  background-color: var(--card-dark);
+  border-color: var(--border-dark);
+  color: var(--text-light);
+}
+
+.filter-dropdown button:hover {
+  background-color: #f9fafb;
+}
+
+.app-container.dark-mode .filter-dropdown button:hover {
+  background-color: rgba(187, 134, 252, 0.05);
+}
+
+.filter-dropdown .dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  min-width: 180px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.app-container.dark-mode .filter-dropdown .dropdown-content {
+  background-color: var(--card-dark);
+  border-color: var(--border-dark);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+.filter-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.filter-dropdown .dropdown-content div {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.app-container.dark-mode .filter-dropdown .dropdown-content div {
+  color: var(--text-light);
+}
+
+.filter-dropdown .dropdown-content div:hover {
+  background-color: #f3f4f6;
+}
+
+.app-container.dark-mode .filter-dropdown .dropdown-content div:hover {
+  background-color: rgba(187, 134, 252, 0.1);
+}
+
+.filter-dropdown .dropdown-content div.active {
+  background-color: #f0f7ff;
+  color: #4a90e2;
+}
+
+.app-container.dark-mode .filter-dropdown .dropdown-content div.active {
+  background-color: rgba(187, 134, 252, 0.2);
+  color: var(--accent);
+}
+
+.filter-dropdown .dropdown-content div:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.filter-dropdown .dropdown-content div:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+/* Yeni proje butonu */
+.btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary) !important;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light) !important;
+}
+
+/* Boş durum ekranı */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem auto;
+  max-width: 500px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.empty-illustration {
+  width: 200px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.app-container.dark-mode .empty-illustration {
+  opacity: 0.7;
+  filter: brightness(0.8);
+}
+
+.empty-state h2 {
+  font-size: 1.5rem;
+  color: #2e3b52;
+  margin-bottom: 0.5rem;
+}
+
+.app-container.dark-mode .empty-state h2 {
+  color: var(--accent);
+}
+
+.empty-state p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.app-container.dark-mode .empty-state p {
+  color: var(--text-muted);
+}
+
+/* Proje görünümleri */
+/* Grid görünümü */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Liste görünümü */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Kanban board görünümü */
+.projects-board {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.board-column {
+  min-width: 300px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.app-container.dark-mode .board-column {
+  background-color: var(--card-dark);
+}
+
+.board-column h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.app-container.dark-mode .board-column h3 {
+  color: var(--accent);
+}
+
+.board-column .project-card {
+  margin-bottom: 1rem;
+}
+
+/* Uyarı mesajları */
+.alert {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.app-container.dark-mode .alert-error {
+  background-color: rgba(244, 67, 54, 0.15);
+  border-color: rgba(244, 67, 54, 0.3);
+  color: #ef5350;
+}
+
+/* Yükleniyor durumu */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.app-container.dark-mode .loading-spinner {
+  border-color: var(--border-dark);
+  border-top-color: var(--accent);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Duyarlı tasarım için medya sorguları */
+@media (max-width: 991px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .page-actions {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .search-bar input {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1.5rem;
+  }
+  
+  .page-actions {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .search-bar {
+    order: -1;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .search-bar input {
+    width: 100%;
+  }
+  
+  .filter-dropdown,
+  .view-toggle {
+    flex-grow: 1;
+  }
+  
+  .btn-primary {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ProjectCard stilleri için temel şablon (ProjectCard.css'inizle bütünleşecek) */
+.project-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.app-container.dark-mode .project-card {
+  background-color: var(--card-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.app-container.dark-mode .project-card:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* Liste görünümündeki proje kartları için stil */
+.projects-list .project-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.projects-list .project-card h3 {
+  flex: 1;
+  margin: 0;
+  color: #2e3b52;
+}
+
+.app-container.dark-mode .projects-list .project-card h3 {
+  color: var(--accent);
+}

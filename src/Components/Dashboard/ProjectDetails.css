@@ -1,0 +1,627 @@
+/* ProjectDetails.css */
+
+:root {
+  --primary: #4B0082;
+  --primary-light: #9370DB;
+  --accent: #BB86FC;
+  --background-dark: #121212;
+  --card-dark: #1E1E1E;
+  --border-dark: #333333;
+  --text-light: #F5F5F5;
+  --text-muted: #AAAAAA;
+  --success: #4CAF50;
+  --error: #F44336;
+  --warning: #FFC107;
+}
+
+.project-details-page {
+  background-color: #f7f8fc;
+  min-height: calc(100vh - 60px);
+  color: #333;
+}
+
+.app-container.dark-mode .project-details-page {
+  background-color: var(--background-dark);
+  color: var(--text-light);
+}
+
+/* Proje üst başlık kısmı */
+.project-header {
+  background-color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.app-container.dark-mode .project-header {
+  background-color: var(--card-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4a90e2;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+
+.app-container.dark-mode .back-button {
+  color: var(--accent);
+}
+
+.back-button:hover {
+  color: #3a7bc8;
+}
+
+.app-container.dark-mode .back-button:hover {
+  color: var(--primary-light);
+}
+
+.project-title {
+  flex: 1;
+  margin: 0 2rem;
+}
+
+.project-title h1 {
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+  color: #2e3b52;
+}
+
+.app-container.dark-mode .project-title h1 {
+  color: var(--accent);
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.app-container.dark-mode .project-meta {
+  color: var(--text-muted);
+}
+
+.project-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+}
+
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.app-container.dark-mode .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+.app-container.dark-mode .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+}
+
+/* Tab navigasyonu */
+.project-tabs {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.app-container.dark-mode .project-tabs {
+  background-color: var(--card-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.tab {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+  color: #6b7280;
+  border-bottom: 2px solid transparent;
+}
+
+.app-container.dark-mode .tab {
+  color: var(--text-muted);
+}
+
+.tab:hover {
+  color: var(--primary);
+  background-color: #f9fafb;
+}
+
+.app-container.dark-mode .tab:hover {
+  color: var(--accent);
+  background-color: rgba(187, 134, 252, 0.1);
+}
+
+.tab.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background-color: #f0f7ff;
+}
+
+.app-container.dark-mode .tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background-color: rgba(187, 134, 252, 0.2);
+}
+
+/* Tab içerikleri */
+.tab-content {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.app-container.dark-mode .tab-content {
+  background-color: var(--card-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Genel bakış sekmesi */
+.overview-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-summary h2,
+.recent-activities h2 {
+  font-size: 1.2rem;
+  color: #2e3b52;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.app-container.dark-mode .project-summary h2,
+.app-container.dark-mode .recent-activities h2 {
+  color: var(--accent);
+}
+
+.project-description {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.app-container.dark-mode .project-description {
+  color: var(--text-muted);
+}
+
+.project-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  background-color: #f9fafb;
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-container.dark-mode .stat-item {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.stat-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.app-container.dark-mode .stat-item:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: var(--primary);
+  background-color: rgba(74, 144, 226, 0.1);
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container.dark-mode .stat-icon {
+  color: var(--accent);
+  background-color: rgba(187, 134, 252, 0.1);
+}
+
+.stat-content h3 {
+  font-size: 0.9rem;
+  margin: 0 0 0.3rem 0;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.app-container.dark-mode .stat-content h3 {
+  color: var(--text-muted);
+}
+
+.stat-content p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2e3b52;
+  margin: 0;
+}
+
+.app-container.dark-mode .stat-content p {
+  color: var(--text-light);
+}
+
+/* Görevler ve Üyeler sekmesi */
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.tab-header h2 {
+  font-size: 1.2rem;
+  color: #2e3b52;
+  margin: 0;
+  font-weight: 600;
+}
+
+.app-container.dark-mode .tab-header h2 {
+  color: var(--accent);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #6b7280;
+}
+
+.app-container.dark-mode .empty-state {
+  color: var(--text-muted);
+}
+
+.empty-state p {
+  margin-bottom: 1.5rem;
+}
+
+/* Üyeler listesi */
+.members-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.member-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-container.dark-mode .member-item {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.member-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-container.dark-mode .member-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.member-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.member-details h3 {
+  font-size: 1rem;
+  margin: 0 0 0.3rem 0;
+  color: #2e3b52;
+}
+
+.app-container.dark-mode .member-details h3 {
+  color: var(--text-light);
+}
+
+.member-roles {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.role-tag {
+  background-color: rgba(74, 144, 226, 0.1);
+  color: var(--primary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.app-container.dark-mode .role-tag {
+  background-color: rgba(187, 134, 252, 0.1);
+  color: var(--accent);
+}
+
+.member-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+/* Ayarlar sekmesi */
+.settings-form {
+  max-width: 600px;
+  width: 100%;
+}
+
+.settings-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.app-container.dark-mode .form-group label {
+  color: var(--text-muted);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: #4b5563;
+}
+
+.app-container.dark-mode .form-group input,
+.app-container.dark-mode .form-group textarea {
+  border-color: var(--border-dark);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.danger-zone {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border: 1px dashed #ef4444;
+  border-radius: 8px;
+}
+
+.app-container.dark-mode .danger-zone {
+  border-color: rgba(244, 67, 54, 0.5);
+  background-color: rgba(244, 67, 54, 0.05);
+}
+
+.danger-zone h3 {
+  color: #ef4444;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.danger-zone p {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.app-container.dark-mode .danger-zone p {
+  color: var(--text-muted);
+}
+
+/* Yükleniyor durumu */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 100px);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.app-container.dark-mode .loading-spinner {
+  border-color: var(--border-dark);
+  border-top-color: var(--accent);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Uyarı mesajları */
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.app-container.dark-mode .alert-error {
+  background-color: rgba(244, 67, 54, 0.1);
+  border-color: rgba(244, 67, 54, 0.3);
+  color: #ef5350;
+}
+
+/* Animasyonlar */
+.project-details-page {
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Duyarlı tasarım */
+@media (max-width: 991px) {
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .project-title {
+    margin: 1rem 0;
+  }
+  
+  .project-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .project-tabs {
+    overflow-x: auto;
+  }
+  
+  .tab {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1.5rem;
+  }
+  
+  .project-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .member-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .member-actions {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .member-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}

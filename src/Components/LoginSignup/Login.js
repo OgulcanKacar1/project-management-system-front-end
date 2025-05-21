@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { login } from '../../services/api'; // api.js'den login fonksiyonunu import ediyoruz
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +18,7 @@ const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [loginSuccess, setLoginSuccess] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // Şifre görünürlüğü durumu
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(prevState => !prevState); // Şifre görünürlüğünü değiştir
+    setShowPassword(prevState => !prevState);
   };
 
   const validateForm = () => {
@@ -68,27 +68,32 @@ const Login = () => {
       setLoginSuccess('');
       
       try {
-        const response = await axios.post('http://localhost:8080/users/login', {
+        // api.js'deki login fonksiyonunu kullanıyoruz
+        const response = await login({
           email: formData.email,
           password: formData.password
         });
 
-        console.log('Giriş başarılı:', response.data);
+        console.log('Giriş başarılı:', response);
         
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify(response.data.user));
+        // Token ve kullanıcı bilgileri api.js'de saklanıyor
+        // Eğer response'da user bilgisi varsa onu da saklayalım
+        if (response.user) {
+          localStorage.setItem('user', JSON.stringify(response.user));
+        }
         
-        setLoginSuccess(response.data.message || 'Giriş başarılı! Yönlendiriliyorsunuz...');
+        setLoginSuccess('Giriş başarılı! Yönlendiriliyorsunuz...');
         
         setTimeout(() => {
           navigate('/');
         }, 2000);
       } catch (error) {
         if (error.response) {
-          setLoginError(error.response.data.message || 'Giriş başarısız oldu');
+          setLoginError(error.response.data?.message || 'Giriş başarısız oldu. E-posta veya şifre hatalı.');
         } else {
           setLoginError('Sunucuya bağlanırken bir hata oluştu. Lütfen daha sonra tekrar deneyin.');
         }
+        console.error('Login error:', error);
       } finally {
         setIsSubmitting(false);
       }
@@ -132,7 +137,7 @@ const Login = () => {
             <label htmlFor='password'>Şifre</label>
             <div className="password-wrapper">
                 <input 
-                  type={showPassword ? 'text' : 'password'} // Şifre görünürlüğü
+                  type={showPassword ? 'text' : 'password'}
                   id="password" 
                   name="password"
                   value={formData.password}

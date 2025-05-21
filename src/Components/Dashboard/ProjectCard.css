@@ -1,0 +1,339 @@
+/* ProjectCard.css */
+
+:root {
+  --primary: #4B0082;
+  --primary-light: #9370DB;
+  --accent: #BB86FC;
+  --background-dark: #121212;
+  --card-dark: #1E1E1E;
+  --border-dark: #333333;
+  --text-light: #F5F5F5;
+  --text-muted: #AAAAAA;
+  --success: #4CAF50;
+  --error: #F44336;
+  --warning: #FFC107;
+}
+
+/* Temel kart stili */
+.project-card {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Grid görünümü için kart stili */
+.grid-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.app-container.dark-mode .grid-view {
+  background-color: var(--card-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.grid-view:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.app-container.dark-mode .grid-view:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.grid-view .card-header {
+  padding: 1.2rem;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-container.dark-mode .grid-view .card-header {
+  border-bottom-color: var(--border-dark);
+}
+
+.grid-view .card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2e3b52;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-container.dark-mode .grid-view .card-header h3 {
+  color: var(--accent);
+}
+
+.grid-view .card-body {
+  padding: 1.2rem;
+  flex-grow: 1;
+}
+
+.grid-view .card-description {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5;
+}
+
+.app-container.dark-mode .grid-view .card-description {
+  color: var(--text-muted);
+}
+
+.grid-view .card-footer {
+  padding: 1rem 1.2rem;
+  border-top: 1px solid #f0f0f0;
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.app-container.dark-mode .grid-view .card-footer {
+  border-top-color: var(--border-dark);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+}
+
+.grid-view .card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-date, .card-creator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.grid-view .card-members {
+  background-color: #4a90e2;
+  color: white;
+  border-radius: 20px;
+  padding: 0.2rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.app-container.dark-mode .grid-view .card-members {
+  background-color: var(--primary);
+}
+
+/* Liste görünümü için kart stili */
+.list-view {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.app-container.dark-mode .list-view {
+  background-color: var(--card-dark);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.list-view:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.app-container.dark-mode .list-view:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.list-view .project-name {
+  flex: 0 0 25%;
+}
+
+.list-view .project-name h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2e3b52;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-container.dark-mode .list-view .project-name h3 {
+  color: var(--accent);
+}
+
+.list-view .project-description {
+  flex: 0 0 40%;
+  padding: 0 1rem;
+}
+
+.list-view .project-description p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-container.dark-mode .list-view .project-description p {
+  color: var(--text-muted);
+}
+
+.list-view .project-meta {
+  flex: 0 0 25%;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.app-container.dark-mode .list-view .project-meta {
+  color: var(--text-muted);
+}
+
+.list-view .project-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.list-view .project-actions {
+  flex: 0 0 10%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+/* Card menu */
+.card-menu, .project-actions {
+  position: relative;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.app-container.dark-mode .icon-btn {
+  color: var(--text-muted);
+}
+
+.icon-btn:hover {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.app-container.dark-mode .icon-btn:hover {
+  background-color: rgba(187, 134, 252, 0.1);
+  color: var(--accent);
+}
+
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 140px;
+  overflow: hidden;
+}
+
+.app-container.dark-mode .menu-dropdown {
+  background-color: var(--card-dark);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+.menu-dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.app-container.dark-mode .menu-dropdown button {
+  color: var(--text-light);
+}
+
+.menu-dropdown button:hover {
+  background-color: #f3f4f6;
+}
+
+.app-container.dark-mode .menu-dropdown button:hover {
+  background-color: rgba(187, 134, 252, 0.1);
+}
+
+.menu-dropdown button.delete {
+  color: #ef4444;
+}
+
+.menu-dropdown button.delete:hover {
+  background-color: #fee2e2;
+}
+
+.app-container.dark-mode .menu-dropdown button.delete:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+@media (max-width: 768px) {
+  .list-view {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+  
+  .list-view .project-name {
+    flex: 0 0 70%;
+  }
+  
+  .list-view .project-actions {
+    flex: 0 0 30%;
+    justify-content: flex-end;
+  }
+  
+  .list-view .project-description {
+    flex: 0 0 100%;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .list-view .project-meta {
+    flex: 0 0 100%;
+    justify-content: space-between;
+  }
+}

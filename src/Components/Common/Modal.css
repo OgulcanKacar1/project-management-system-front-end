@@ -1,0 +1,148 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.confirm-modal {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: modal-appear 0.3s ease-out;
+}
+
+.app-container.dark-mode .confirm-modal {
+  background-color: var(--card-dark);
+  color: var(--text-light);
+  border: 1px solid var(--border-dark);
+}
+
+.modal-header {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.app-container.dark-mode .modal-header {
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.warning-icon {
+  background-color: #fee2e2;
+  color: #dc2626;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.app-container.dark-mode .warning-icon {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #ef5350;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #111827;
+  font-weight: 600;
+}
+
+.app-container.dark-mode .modal-header h2 {
+  color: var(--accent);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-body p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.app-container.dark-mode .modal-body p {
+  color: var(--text-muted);
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.app-container.dark-mode .modal-footer {
+  border-top: 1px solid var(--border-dark);
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.app-container.dark-mode .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+.app-container.dark-mode .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .confirm-modal {
+    width: 95%;
+  }
+}

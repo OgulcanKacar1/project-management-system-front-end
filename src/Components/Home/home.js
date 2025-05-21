@@ -27,7 +27,6 @@ const Home = () => {
           <p>Profesyonel proje yönetimi için güçlü çözümler</p>
           <div className="hero-btns">
             {user ? (
-              // Kullanıcı giriş yapmışsa
               <button className="btn btn-primary">
                 <Link to="/dashboard" className="btn-link">Hemen Başla</Link>
               </button>
